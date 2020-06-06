@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>TV shows</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+      <div class="container">
+            <h1>Add a new show</h1>
+            <div class="row">
+                  <form class="col s8" action="create" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                              <div class="input-field col s12">
+                                    <input id="title" type="text" class="validate" name="title">
+                                    <label for="title">Title</label>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="input-field col s6">
+                                    <input id="network" type="text" class="validate" name="network">
+                                    <label for="network">Network</label>
+                              </div>
+                              <div class="input-field col s6">
+                                    <input id="date" type="text" class="datepicker">
+                                    <label for="date">Date</label>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="input-field col s12">
+                                    <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                                    <label for="description">Description</label>
+                              </div>
+                        </div>
+                        <a type="submit" class="waves-effect waves-light btn">Create</a>
+                  </form>
+            </div>
+      </div>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
