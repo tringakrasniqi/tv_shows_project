@@ -9,34 +9,37 @@
 <body>
       <div class="container">
             <a onClick="window.history.back()" style="cursor:pointer;">Go Back</a>
-            <h1>Add a new show</h1>
+            <h1>Edit show {{show.id}}</h1>
             <div class="row">
-                  <form class="col s8" action="/shows/create" method="POST">
+                  <form class="col s8" action="/shows/{{show.id}}/update" method="POST">
                         {% csrf_token %}
                         <div class="row">
                               <div class="input-field col s12">
-                                    <input id="title" type="text" class="validate" name="title">
+                                    <input id="title" type="text" class="validate" name="title" value="{{show.title}}">
                                     <label for="title">Title</label>
                               </div>
                         </div>
                         <div class="row">
                               <div class="input-field col s6">
-                                    <input id="network" type="text" class="validate" name="network">
+                                    <input id="network" type="text" class="validate" name="network" value="{{show.network}}">
                                     <label for="network">Network</label>
                               </div>
                               <div class="input-field col s6">
-                                    <input id="date" type="date" class="datepicker" name="release_date">
+                                    <input id="date" type="date" class="datepicker" name="release_date" value="{{show.release_date}}">
                                     <label for="date">Date</label>
                               </div>
                         </div>
                         <div class="row">
                               <div class="input-field col s12">
-                                    <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                                    <textarea id="description" class="materialize-textarea" name="description">{{show.description}}</textarea>
                                     <label for="description">Description</label>
                               </div>
                         </div>
-                        <button type="submit" class="waves-effect waves-light btn">Create</button>
+                        <button type="submit" class="waves-effect waves-light btn">Update</button>
                   </form>
+            </div>
+            <div class="row">
+                  <a href="/shows/{{show.id}}" class="waves-effect waves-light btn">Go to show</a>
             </div>
       </div>
       
