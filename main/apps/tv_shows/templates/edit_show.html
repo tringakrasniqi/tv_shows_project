@@ -5,14 +5,23 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>TV shows</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
       <div class="container">
-            <a onClick="window.history.back()" style="cursor:pointer;">Go Back</a>
+            <a href="/shows">Go Back</a>
             <h1>Edit show {{show.id}}</h1>
             <div class="row">
                   <form class="col s8" action="/shows/{{show.id}}/update" method="POST">
                         {% csrf_token %}
+                        {% if messages %}
+                              <ul class="messages">    
+                              {% for message in messages %}    
+                                    <li>{{ message }}</li>    
+                              {% endfor %}
+                              </ul>
+                        {% endif %}
                         <div class="row">
                               <div class="input-field col s12">
                                     <input id="title" type="text" class="validate" name="title" value="{{show.title}}">
