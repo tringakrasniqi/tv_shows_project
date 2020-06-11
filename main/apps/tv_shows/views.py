@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from time import strftime
 from .models import TVshow
 
 def index(request):

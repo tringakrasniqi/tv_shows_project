@@ -3,6 +3,9 @@ from django.db import models
 class TVshowManager(models.Manager):
       def basic_validator(self, postData):
             errors = {}
+            result = TVshow.objects.filter(title=postData['title'])
+            if result:
+                  errors['title'] = "This TV show already exists" 
             if len(postData['title']) < 2:
                   errors['title'] = "Title must be more than 2 characters"
             if not postData['network'] or len(postData['network']) < 2:
